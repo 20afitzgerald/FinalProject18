@@ -1,0 +1,27 @@
+class Character:
+    """class describing the characters which can be guessed"""
+
+    def __init__(self, name, haircolor, eyecolor, glasses, gender):
+        self.name = name
+        self.haircolor = haircolor
+        self.eyecolor = eyecolor
+        self.glasses = glasses
+        self.gender = gender
+
+allison = Character("Allison", "blonde", "blue", "no", "female")
+beatriz = Character("Beatriz", "brown", "brown", "yes", "female")
+cara = Character("Cara", "brown", "hazel", "sometimes", "female")
+isabella = Character("Isabella", "brown", "dark brown", "yes", "female")
+janny = Character("Janny", "dark brown", "dark brown", "yes", "female")
+jenn = Character("Jenn", "blonde", "brown", "sometimes", "female")
+kim = Character("Kim", "black", "dark brown", "no", "female")
+lara = Character("Lara", "brown", "hazel", "yes", "female")
+matt = Character("Matt", "brown", "hazel", "no", "male")
+nicole = Character("Nicole", "brown", "brown", "yes", "female")
+nikki = Character("Nikki", "black", "brown", "yes", "female")
+omay = Character("Omay", "black", "dark brown", "yes", "male")
+pranav = Character("Pranav", "black", "brown", "yes", "male")
+prerna = Character("Prerna", "black", "brown", "sometimes", "female")
+yunxiu = Character("Yunxiu", "black", "dark brown", "no", "female")
+zach = Character("Zach", "brown", "brown", "no", "male")
+
