@@ -1,3 +1,4 @@
+import random
 class Character:
     """class describing the characters which can be guessed"""
 
@@ -25,3 +26,23 @@ prerna = Character("Prerna", "black", "brown", "sometimes", "female")
 yunxiu = Character("Yunxiu", "black", "dark brown", "no", "female")
 zach = Character("Zach", "brown", "brown", "no", "male")
 
+people = [allison, beatriz, cara, isabella, janny, jenn, kim, lara, matt, nicole, nikki, omay, pranav, prerna, yunxiu, zach]
+person = random.shuffle(people)
+person = random.choice(people)
+print("The computer has randmly chosen one person in this class to be the person. Your job is to ask questions to figure out who it is. In case you don't pay very much attention, this is the list of people who can be chosen:")
+for character in people:
+    print(character.name)
+
+lives = 10
+while lives > 1:
+    question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', or 'gender' for a response.\n")
+    if question == "haircolor":
+        print(person.haircolor)
+    elif question == "eyecolor":
+        print(person.eyecolor)
+    elif question == "glasses":
+        print(person.glasses)
+    elif question == "gender":
+        print(person.gender)
+    else:
+        print("Invalid input.\n")
