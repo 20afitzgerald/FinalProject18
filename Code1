@@ -27,22 +27,64 @@ yunxiu = Character("Yunxiu", "black", "dark brown", "no", "female")
 zach = Character("Zach", "brown", "brown", "no", "male")
 
 people = [allison, beatriz, cara, isabella, janny, jenn, kim, lara, matt, nicole, nikki, omay, pranav, prerna, yunxiu, zach]
-person = random.shuffle(people)
 person = random.choice(people)
-print("The computer has randmly chosen one person in this class to be the person. Your job is to ask questions to figure out who it is. In case you don't pay very much attention, this is the list of people who can be chosen:")
+print("The computer has randomly selected one person in this class to be the chosen one. Your job is to ask questions to figure out who it is. If you can correctly guess the person with only three attributes, you win. You get two final guesses after these three attributes have been determined. If at any point in the game you feel confident that you know the answer, you can make a final guess. But be warned: if this guess is incorrect, you will not get another guess and will therefore lose.  In case you don't pay very much attention, this is the list of people who can be chosen:")
 for character in people:
     print(character.name)
 
-lives = 10
-while lives > 1:
-    question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', or 'gender' for a response.\n")
-    if question == "haircolor":
-        print(person.haircolor)
-    elif question == "eyecolor":
-        print(person.eyecolor)
-    elif question == "glasses":
-        print(person.glasses)
-    elif question == "gender":
-        print(person.gender)
+def play_again():
+    play_again = input("Would you like to play again? Type in yes or no.\n")
+    global replay
+    global person
+    global guesses
+    if play_again == "yes":
+        replay = True
+        guesses = 0
+        person = random.choice(people)
+        for character in people:
+            print(character.name)
     else:
-        print("Invalid input.\n")
+        print("Thanks for playing!")
+        replay = False
+
+
+replay = True
+guesses = 0
+while replay == True:
+    while guesses < 3:
+        question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', or 'gender' for a response. If you are ready to make a guess, entger 'guess'.\n")
+        guesses += 1
+        if question == "haircolor":
+            print(person.haircolor)
+        elif question == "eyecolor":
+            print(person.eyecolor)
+        elif question == "glasses":
+            print(person.glasses)
+        elif question == "gender":
+            print(person.gender)
+        elif question == "guess":
+            user_guess = input("Who do you think the person is?\n")
+                if user_guess == person.name:
+                    guesses -= 1
+                    print(f"You guessed correctly! You win with only {guesses} attributes!")
+                    play_again()
+                else:
+                    print("You guessed wrong! You lose!!!")
+                    play_again()
+        else:
+            print("Invalid input.\n")
+            guesses -= 1
+
+    if guesses == 3:
+        final_guess1 = input("You already have determined three attributes of the chosen one and must guess. Who do you think it is?\n")
+        if final_guess1 == person.name:
+            print("You guessed correctly! You win!!!")
+            play_again()
+        else:
+            final_guess2 = input("That is not the chosen one! You get one more guess, pick carefully.\n")
+            if final_guess2 = person.name:
+                print("You guessed correctly! You win!!!")
+                play_again()
+            else:
+                print("You guessed wrong! You lose!!!)
+                play_again()
