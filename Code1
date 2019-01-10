@@ -115,5 +115,5 @@ while replay == True:
                 print("You guessed correctly! You win!!!")
                 play_again()
             else:
-                print("You guessed wrong! You lose!!!)
+                print(f"The chosen one was {person.name}. You guessed wrong! You lose!!!")
                 play_again()
