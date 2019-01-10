@@ -28,6 +28,7 @@ zach = Character("Zach", "brown", "brown", "no", "male")
 
 people = [allison, beatriz, cara, isabella, janny, jenn, kim, lara, matt, nicole, nikki, omay, pranav, prerna, yunxiu, zach]
 person = random.choice(people)
+print("Hello! Welcome to Guess Who: B3/4 Programming Special Edition!")
 print("The computer has randomly selected one person in this class to be the chosen one. Your job is to ask questions to figure out who it is. If you can correctly guess the person with only three attributes, you win. You get two final guesses after these three attributes have been determined. If at any point in the game you feel confident that you know the answer, you can make a final guess. But be warned: if this guess is incorrect, you will not get another guess and will therefore lose.  In case you don't pay very much attention, this is the list of people who can be chosen:")
 for character in people:
     print(character.name)
@@ -56,12 +57,40 @@ while replay == True:
         guesses += 1
         if question == "haircolor":
             print(person.haircolor)
+            temp_people1 = []
+            for character in people:
+                if character.haircolor == person.haircolor:
+                    temp_people.append(character)
+            people[:] = temp_people1
+            for character in people:
+                print(character.name)
         elif question == "eyecolor":
             print(person.eyecolor)
+            temp_people2 = []
+            for character in people:
+                if character.eyecolor == person.eyecolor:
+                    temp_people2.append(character)
+            people[:] = temp_people2
+            for character in people:
+                print(character.name)
         elif question == "glasses":
             print(person.glasses)
+            temp_people3 = []
+            for character in people:
+                if character.glasses == person.glasses:
+                    temp_people3.append(character)
+            people[:] = temp_people3
+            for character in people:
+                print(character.name)
         elif question == "gender":
             print(person.gender)
+            temp_people4 = []
+            for character in people:
+                if character.gender == person.gender:
+                    temp_people4.append(character)
+            people[:] = temp_people4
+            for character in people:
+                print(character.name)
         elif question == "guess":
             user_guess = input("Who do you think the person is?\n")
                 if user_guess == person.name:
