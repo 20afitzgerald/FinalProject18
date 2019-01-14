@@ -2,31 +2,33 @@ import random
 class Character:
     """class describing the characters which can be guessed"""
 
-    def __init__(self, name, haircolor, eyecolor, glasses, gender):
+    def __init__(self, name, haircolor, eyecolor, glasses, gender, row):
         self.name = name
         self.haircolor = haircolor
         self.eyecolor = eyecolor
         self.glasses = glasses
         self.gender = gender
+        self.row = row
 
-allison = Character("Allison", "blonde", "blue", "no", "female")
-beatriz = Character("Beatriz", "brown", "brown", "yes", "female")
-cara = Character("Cara", "brown", "hazel", "sometimes", "female")
-isabella = Character("Isabella", "brown", "dark brown", "yes", "female")
-janny = Character("Janny", "dark brown", "dark brown", "yes", "female")
-jenn = Character("Jenn", "blonde", "brown", "sometimes", "female")
-kim = Character("Kim", "black", "dark brown", "no", "female")
-lara = Character("Lara", "brown", "hazel", "yes", "female")
-matt = Character("Matt", "brown", "hazel", "no", "male")
-nicole = Character("Nicole", "brown", "brown", "yes", "female")
-nikki = Character("Nikki", "black", "brown", "yes", "female")
-omay = Character("Omay", "black", "dark brown", "yes", "male")
-pranav = Character("Pranav", "black", "brown", "yes", "male")
-prerna = Character("Prerna", "black", "brown", "sometimes", "female")
-yunxiu = Character("Yunxiu", "black", "dark brown", "no", "female")
-zach = Character("Zach", "brown", "brown", "no", "male")
+allison = Character("Allison", "blonde", "blue", "no", "female", "third")
+beatriz = Character("Beatriz", "brown", "brown", "yes", "female", "first")
+cara = Character("Cara", "brown", "hazel", "sometimes", "female", "second")
+isabella = Character("Isabella", "brown", "dark brown", "yes", "female", "first")
+janny = Character("Janny", "dark brown", "dark brown", "yes", "female", "fourth")
+jenn = Character("Jenn", "blonde", "brown", "sometimes", "female", "third")
+kim = Character("Kim", "black", "dark brown", "no", "female", "fourth")
+lara = Character("Lara", "brown", "hazel", "yes", "female", "fourth")
+matt = Character("Matt", "brown", "hazel", "no", "male", "second")
+maya = Character("Maya", "brown", "brown", "no", "female", "second")
+nicole = Character("Nicole", "brown", "brown", "yes", "female", "first")
+nikki = Character("Nikki", "black", "brown", "yes", "female", "first")
+omay = Character("Omay", "black", "dark brown", "yes", "male", "first")
+pranav = Character("Pranav", "black", "brown", "yes", "male", "third")
+prerna = Character("Prerna", "black", "brown", "sometimes", "female", "third")
+yunxiu = Character("Yunxiu", "black", "dark brown", "no", "female", "fourth")
+zach = Character("Zach", "brown", "brown", "no", "male", "fourth")
 
-people = [allison, beatriz, cara, isabella, janny, jenn, kim, lara, matt, nicole, nikki, omay, pranav, prerna, yunxiu, zach]
+people = [allison, beatriz, cara, isabella, janny, jenn, kim, lara, matt, maya, nicole, nikki, omay, pranav, prerna, yunxiu, zach]
 person = random.choice(people)
 print("Hello! Welcome to Guess Who: B3/4 Programming Special Edition!")
 print("The computer has randomly selected one person in this class to be the chosen one. Your job is to ask questions to figure out who it is. If you can correctly guess the person with only three attributes, you win. You get two final guesses after these three attributes have been determined. If at any point in the game you feel confident that you know the answer, you can make a final guess. But be warned: if this guess is incorrect, you will not get another guess and will therefore lose.  In case you don't pay very much attention, this is the list of people who can be chosen:")
@@ -53,7 +55,7 @@ replay = True
 guesses = 0
 while replay == True:
     while guesses < 3:
-        question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', or 'gender' for a response. If you are ready to make a guess, entger 'guess'.\n")
+        question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', 'gender', or 'row' for a response. If you are ready to make a guess, enter 'guess'.\n")
         guesses += 1
         if question == "haircolor":
             print(person.haircolor)
@@ -91,15 +93,24 @@ while replay == True:
             people[:] = temp_people4
             for character in people:
                 print(character.name)
+        elif question == "row_in_class":
+            print(person.row)
+            temp_people5 = []
+            for character in people:
+                if character.row == person.row:
+                    temp_people5.append(character)
+            people[:] = temp_people5
+            for character in people:
+                print(character.name)
         elif question == "guess":
             user_guess = input("Who do you think the person is?\n")
-                if user_guess == person.name:
-                    guesses -= 1
-                    print(f"You guessed correctly! You win with only {guesses} attributes!")
-                    play_again()
-                else:
-                    print("You guessed wrong! You lose!!!")
-                    play_again()
+            if user_guess == person.name:
+                guesses -= 1
+                print(f"You guessed correctly! You win with only {guesses} attributes!")
+                play_again()
+            else:
+                print("You guessed wrong! You lose!!!")
+                play_again()
         else:
             print("Invalid input.\n")
             guesses -= 1
@@ -111,7 +122,7 @@ while replay == True:
             play_again()
         else:
             final_guess2 = input("That is not the chosen one! You get one more guess, pick carefully.\n")
-            if final_guess2 = person.name:
+            if final_guess2 == person.name:
                 print("You guessed correctly! You win!!!")
                 play_again()
             else:
