@@ -34,6 +34,7 @@ gerstein = Character("Gerstein", "brown", "brown", "yes", "female", "first", "Tr
 
 # create a grid to display names
 def grid():
+    """ creates grid to display possible people"""
     global person
     rows = 1
     cols = 1
@@ -64,6 +65,7 @@ grid()
 
 # play again function to allow the player to continue playing with a new person
 def play_again_function():
+    """ allows player to play again by chosing a new chosen one and resetting variables"""
     play_again = input("Would you like to play again? Type in yes or no.\n")
     global replay
     global person
