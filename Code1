@@ -1,4 +1,5 @@
 import random
+# create class to describe people who can be guessed
 class Character:
     """class describing the characters which can be guessed"""
 
@@ -11,6 +12,7 @@ class Character:
         self.row = row
         self.alive = alive
 
+# use class to create characters
 allison = Character("Allison", "blonde", "blue", "no", "female", "third", "True")
 beatriz = Character("Beatriz", "brown", "brown", "yes", "female", "first", "True")
 cara = Character("Cara", "brown", "hazel", "sometimes", "female", "second", "True")
@@ -30,6 +32,7 @@ yunxiu = Character("Yunxiu", "black", "brown", "no", "female", "fourth", "True")
 zach = Character("Zach", "brown", "brown", "no", "male", "fourth", "True")
 gerstein = Character("Gerstein", "brown", "brown", "yes", "female", "first", "True")
 
+# create a grid to display names
 def grid():
     global person
     rows = 1
@@ -48,15 +51,18 @@ def grid():
             else:
                 print('X', end=' | ')
 
-
+# pick a character to be the chosen one and take the chosen one out of the unchosen list so they are not chosen again
 people = [allison, beatriz, cara, isabella, janny, jenn, kim, lara, matt, maya, nicole, nikki, omay, pranav, prerna, yunxiu, zach, gerstein]
 unchosen_ones = [allison, beatriz, cara, isabella, janny, jenn, kim, lara, matt, maya, nicole, nikki, omay, pranav, prerna, yunxiu, zach, gerstein]
 person = random.choice(unchosen_ones)
 unchosen_ones.remove(person)
+
+#introduce game and print original grid
 print("Hello! Welcome to Guess Who: B3/4 Programming Special Edition!")
 print("The computer has randomly selected one person in this class to be the chosen one. Your job is to ask questions to figure out who it is.\n If you can correctly guess the person with only three attributes, you win. You get two final guesses after these three attributes have been determined.\n If at any point in the game you feel confident that you know the answer, you can make a final guess. But be warned: if this guess is incorrect, you will not get another guess and will therefore lose.\n In case you don't pay very much attention, this is the list of people who can be chosen:")
 grid()
 
+# play again function to allow the player to continue playing with a new person
 def play_again_function():
     play_again = input("Would you like to play again? Type in yes or no.\n")
     global replay
@@ -73,15 +79,21 @@ def play_again_function():
     else:
         print("Thanks for playing!")
         replay = False
-
+# big while loop to continue game as long as player wants to
 replay = True
 guesses = 0
 while replay == True:
+    # while loop to only continue each game until the person has determined 3 attributes
     while guesses < 3:
+        # asks player for the attribute they want to know
         question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', 'gender', or 'row' for a response. If you are ready to make a guess, enter 'guess'.\n")
+        # adds to guesses variable
         guesses += 1
+        # check value of question with each attribute
         if question == "haircolor":
+        # print the attribute that the chosen one has (EX: if player asks for haircolor, print the hair color of the chosen one)
             print(person.haircolor)
+            # check if each possible person has the same attribute as the chosen one and only print the names of the people who do in the grid
             for character in people:
                 if character.haircolor != person.haircolor:
                     character.alive = False
@@ -110,6 +122,7 @@ while replay == True:
                 if character.row != person.row:
                     character.alive = False
             grid()
+        # if person inputs "guess", they are asked to guess who the chosen one is and told if they are correct
         elif question == "guess":
             user_guess = input("Who do you think the person is?\n").title()
             if user_guess == person.name:
@@ -118,21 +131,26 @@ while replay == True:
                 play_again_function()
             else:
                 print("You guessed wrong! You lose!!!")
+                print(f"The chosen one was actually {person.name}")
                 play_again_function()
+        # if player inputs an option that isn't one of the attributes or "guess", they are told it is invalid and allowed to input another question
         else:
             print("Invalid input.\n")
             guesses -= 1
-
+    # once the player has asked for three attributes, they must guess
     if guesses == 3:
         final_guess1 = input("You already have determined three attributes of the chosen one and must guess. Who do you think it is?\n").title()
+        # checks value of guess, compares it to chosen one, and tells the player if they are correct
         if final_guess1 == person.name:
             print("You guessed correctly! You win!!!")
             play_again_function()
+        # gives the player the opportunity for a second final guess if necessary and checks if it is correct
         else:
             final_guess2 = input("That is not the chosen one! You get one more guess, pick carefully.\n").title()
             if final_guess2 == person.name:
                 print("You guessed correctly! You win!!!")
                 play_again_function()
+            # if the player loses, tells them who the chosen one actually was
             else:
                 print(f"The chosen one was {person.name}. You guessed wrong! You lose!!!")
                 play_again_function()
