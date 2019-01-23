@@ -81,14 +81,15 @@ def play_again_function():
     else:
         print("Thanks for playing!")
         replay = False
+
 # big while loop to continue game as long as player wants to
 replay = True
 guesses = 0
 while replay == True:
-    # while loop to only continue each game until the person has determined 3 attributes
+    # while loop to only continue each round until the person has determined 3 attributes
     while guesses < 3:
         # asks player for the attribute they want to know
-        question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', 'gender', or 'row' for a response. If you are ready to make a guess, enter 'guess'.\n")
+        question = input("Which attribute would you like to determine? Enter 'haircolor', 'eyecolor', 'glasses', 'gender', or 'row' for a response. If you are ready to make a guess, enter 'guess'.\n").lower()
         # adds to guesses variable
         guesses += 1
         # check value of question with each attribute
