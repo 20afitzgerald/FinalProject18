@@ -8,5 +8,5 @@ I didn't use any digital sources for the game, but I did utilize the in class re
 
 Coster, Ora and Theo. Guess Who. Hasbro, 1979. Board Game. 
 
-Flowchart: https://www.draw.io/#G1SpYIqjoZFaMVJodhhQeoRHTHA-V501HH 
+Flowchart: https://drive.google.com/file/d/1SpYIqjoZFaMVJodhhQeoRHTHA-V501HH/view?usp=sharing
 Presentation: https://docs.google.com/presentation/d/17mZ1O-vtesSvkkvTnSBJcZZ_VqNEj9OxMrJzawg1keE/edit#slide=id.g4e3552f82c_0_132 
